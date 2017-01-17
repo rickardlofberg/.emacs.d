@@ -21,9 +21,9 @@ Use [[https://elpa.gnu.org/][ELPA]] and [[https://melpa.org/#/][MELPA]] archives
 (setq apropos-sort-by-scores t)
 #+END_SRC
 
-** Initilaize 
+** Initialise 
 
-Make sure that the archives are availale.
+Make sure that the archives are available.
 
 #+BEGIN_SRC emacs-lisp
 (package-initialize)
@@ -49,11 +49,11 @@ This will install all the packages which are not installed.
 #+END_SRC
 * Style
 
-Here are all the changes that make some change to the apperance of Emacs.
+Here are all the changes that make some change to the appearance of Emacs.
 
 ** Disable the splash screen (starting screen)
 
-No need to have the starting screen. However, if you like it you can comment this line out with =;;= at the begining or by just removing it.
+No need to have the starting screen. However, if you like it you can comment this line out with =;;= at the beginning or by just removing it.
 
 #+BEGIN_SRC emacs-lisp
 (setq inhibit-splash-screen t)
@@ -69,7 +69,7 @@ To hide the menu change =t= to =-1= and vise-versa for toolbar. To change the te
 (load-theme 'wombat)
 #+END_SRC
 
-** Start in maximized window mode
+** Start in maximised window mode
 
 I prefer Emacs to launch in full screen, either delete or comment this out if you don't like this option.
 
@@ -77,9 +77,9 @@ I prefer Emacs to launch in full screen, either delete or comment this out if yo
 (toggle-frame-maximized)
 #+END_SRC
 
-** Highlight parethesis
+** Highlight parenthesis
 
-This makes programing a lot easier, basically it highlights (), {} and []. It might do some more but these are the ones I benefit from.
+This makes programming a lot easier, basically it highlights (), {} and []. It might do some more but these are the ones I benefit from.
 
 #+BEGIN_SRC emacs-lisp
 (show-paren-mode)
@@ -104,39 +104,14 @@ Good to keep track of how wide I've written, for example when coding.
 
 ** Highlight line
 
-Highlight the line which the pointer is at. Very usefull to quickly find the point.
+Highlight the line which the pointer is at. Very useful to quickly find the point.
 
 #+BEGIN_SRC emacs-lisp
 (global-hl-line-mode 1)
 #+END_SRC
-
-** Not sorted things
-
-These are some other settings which I haven't sorted into categories yet.
-
-#+BEGIN_SRC emacs-lisp
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(column-number-mode t)
- '(global-hl-line-mode t)
- '(line-number-mode t)
- '(package-selected-packages
-   (quote
-    (visible-mark magit multiple-cursors lua-mode expand-region elpy)))
- '(safe-local-variable-values (quote ((encoding . utf-8)))))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(hl-line ((t (:background "gray20")))))
-#+END_SRC
 * Comfort of Life
 
-This section contain some small things which makes my emacs experience much more pleasent.
+This section contain some small things which makes my emacs experience much more pleasant.
 
 ** Delete and replace region when typing
 
@@ -164,7 +139,7 @@ This should fix Tilde problem (can't be typed) for Swedish keyboard layouts.
 
 ** IDO-Mode (find files quickly)
 
-Enables IDO-mode which makes it easier to find and open files in the system. When you for example use =C-c C-f= (find file) or =C-c C-b= (switch buffer) it will autocomplete.
+Enables IDO-mode which makes it easier to find and open files in the system. When you for example use =C-c C-f= (find file) or =C-c C-b= (switch buffer) it will auto-complete.
 
 #+BEGIN_SRC emacs-lisp
 (require 'ido)
@@ -178,8 +153,7 @@ Add newline with =C-n= if at end of buffer, otherwise you have to press RET.
 #+BEGIN_SRC emacs-lisp
 (setq next-line-add-newlines t)
 #+END_SRC
-
-* Keyboard rebindings
+* Keyboard rebinding
 ** Backward delete
 Never ever use backspace again, there are two settings below, both at the same key but for different layouts, UK and Swedish.
 
@@ -205,7 +179,6 @@ Use multiple cursors to edit at several places at once. =C->= will the next matc
 (global-set-key (kbd "C-c C-<") 'mc/mark-all-like-this)
 (global-set-key (kbd "C-c m c") 'mc/edit-lines)
 #+END_SRC
-
 * Coding
 ** Elpy mode
 
@@ -215,7 +188,7 @@ Enable Elpy-mode.
 (elpy-enable)
 #+END_SRC
 
-Change default interpretor to python3.
+Change default interpreter to python3.
 
 #+BEGIN_SRC emacs-lisp
 (setq elpy-rpc-python-command "python3")
@@ -231,7 +204,6 @@ This is used for code-folding, it should detect segments and then fold/unfold it
 (require 'expand-region)
 (global-set-key (kbd "C-@") 'er/expand-region)
 #+END_SRC
-
 * Not active
 
 Currently not using minimap-mode
@@ -249,7 +221,7 @@ Make sure that we have org-mode installed.
 #+END_SRC
 ** Global shortcuts
 
-These are the global shortcuts which we want to be accessable from everywhere.
+These are the global shortcuts which we want to be accessible from everywhere.
 =C-c l= shortcut which saves a a link to current document which can later be inserted in an org document with the command =C-c C-o=.
 =C-c a= show the agenda.
 =C-c c= opens the capture menu to add different tasks such as tasks, ideas or TODO's.
@@ -271,7 +243,7 @@ These are the options you can cycle through for the TODO items.
 #+END_SRC
 ** Org-mode text wrapping
 
-This makes the text wrap at the end of emcas windows.
+This makes the text wrap at the end of emacs windows.
 
 #+BEGIN_SRC emacs-lisp
 (add-hook 'org-mode-hook #'(lambda ()
@@ -281,7 +253,7 @@ This makes the text wrap at the end of emcas windows.
 
 ** Set priority numbering and their colours
 
-The three priorety are A,B and C with A being the highest and default. Below is the colour and looks for each of the prioreties.
+The three priority are A,B and C with A being the highest and default. Below is the colour and looks for each of the priorities.
 
 #+BEGIN_SRC emacs-lisp
 (setq org-highest-priority ?A)
@@ -332,7 +304,7 @@ This is a file to capture notes.
 
 ** Set capture templates
 
-These are the tempplates for saving ideas. There are three options, ideas, notes and TODOs.
+These are the templates for saving ideas. There are three options, ideas, notes and TODOs.
 
 #+BEGIN_SRC emacs-lisp
 (setq org-capture-templates
@@ -346,4 +318,28 @@ These are the tempplates for saving ideas. There are three options, ideas, notes
      ("t" "Todo" entry
       (file+headline "~/Dropbox/org/todo.org" "Tasks")
       "* TODO [#B] %?\nSCHEDULED: %(org-insert-time-stamp (org-read-date nil t \"+0d\"))\n%a\n")))
+#+END_SRC
+* Not sorted things
+
+These are some other settings which I haven't sorted into categories yet.
+
+#+BEGIN_SRC emacs-lisp
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(column-number-mode t)
+ '(global-hl-line-mode t)
+ '(line-number-mode t)
+ '(package-selected-packages
+   (quote
+    (visible-mark magit multiple-cursors lua-mode expand-region elpy)))
+ '(safe-local-variable-values (quote ((encoding . utf-8)))))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(hl-line ((t (:background "gray20")))))
 #+END_SRC
