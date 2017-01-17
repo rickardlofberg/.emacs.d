@@ -1,4 +1,16 @@
 * Get packages
+** List of packages
+
+These are all the non built-in packages which are used in this build.
+
+#+BEGIN_SRC emacs-lisp
+(setq package-list '(elpy expand-region magit multiple-cursors))
+#+END_SRC
+
+** Archives used
+
+Use [[https://elpa.gnu.org/][ELPA]] and [[https://melpa.org/#/][MELPA]] archives for packages.
+
 #+BEGIN_SRC emacs-lisp
 ;; Add packet archives
 (setq package-archives
@@ -8,19 +20,47 @@
  ;; Sort C - h  a command to sort by relevance
 (setq apropos-sort-by-scores t)
 #+END_SRC
+
+** Initilaize 
+
+Make sure that the archives are availale.
+
+#+BEGIN_SRC emacs-lisp
+(package-initialize)
+#+END_SRC
+
+** Fetch packages
+
+Fetch all the packages which are needed.
+
+#+BEGIN_SRC emacs-lisp
+(unless package-archive-contents
+  (package-refresh-contents))
+#+END_SRC
+
+** Install packages
+
+This will install all the packages which are not installed.
+
+#+BEGIN_SRC emacs-lisp
+(dolist (package package-list)
+  (unless (package-installed-p package)
+    (package-install package)))
+#+END_SRC
 * Style
 
 Here are all the changes that make some change to the apperance of Emacs.
 
 ** Disable the splash screen (starting screen)
 
+No need to have the starting screen. However, if you like it you can comment this line out with =;;= at the begining or by just removing it.
+
 #+BEGIN_SRC emacs-lisp
 (setq inhibit-splash-screen t)
 #+END_SRC
 
 ** Hide the menu and toolbar; set the title and load theme
-To hide the menu change =t= to =-1= and vise-versa for toolbar.
-To change the text in top left corner, change the text between the quotation marks.
+To hide the menu change =t= to =-1= and vise-versa for toolbar. To change the text in top left corner, change the text between the quotation marks. The theme can also be changed I would recommend you type =M-x= and then =customize-themes= to find a theme which you like and then change the text to that theme.
 
 #+BEGIN_SRC emacs-lisp
 (menu-bar-mode t)
@@ -31,7 +71,7 @@ To change the text in top left corner, change the text between the quotation mar
 
 ** Start in maximized window mode
 
-I prefer Emacs to launch in full screen
+I prefer Emacs to launch in full screen, either delete or comment this out if you don't like this option.
 
 #+BEGIN_SRC emacs-lisp
 (toggle-frame-maximized)
@@ -39,7 +79,7 @@ I prefer Emacs to launch in full screen
 
 ** Highlight parethesis
 
-This makes programing a lot easier.
+This makes programing a lot easier, basically it highlights (), {} and []. It might do some more but these are the ones I benefit from.
 
 #+BEGIN_SRC emacs-lisp
 (show-paren-mode)
@@ -47,7 +87,7 @@ This makes programing a lot easier.
  
 ** Line numbers
 
-This makes sure that the linenumbers are always shown..
+This makes sure that the line numbers are always shown. Makes it easier to use command such as =M-g M-g= and then typing the line you want to go to.
 
 #+BEGIN_SRC emacs-lisp
 (require 'linum)
@@ -64,7 +104,7 @@ Good to keep track of how wide I've written, for example when coding.
 
 ** Highlight line
 
-Highlight the line which the pointer is at.
+Highlight the line which the pointer is at. Very usefull to quickly find the point.
 
 #+BEGIN_SRC emacs-lisp
 (global-hl-line-mode 1)
@@ -96,7 +136,7 @@ These are some other settings which I haven't sorted into categories yet.
 #+END_SRC
 * Comfort of Life
 
-This section contain some small things which makes my emacs experience much more pleasent
+This section contain some small things which makes my emacs experience much more pleasent.
 
 ** Delete and replace region when typing
 
@@ -133,7 +173,7 @@ Enables IDO-mode which makes it easier to find and open files in the system. Whe
 
 ** Automatic newlines
 
-Add newline with C-n if at end of buffer, otherwise you have to press RET.
+Add newline with =C-n= if at end of buffer, otherwise you have to press RET.
 
 #+BEGIN_SRC emacs-lisp
 (setq next-line-add-newlines t)
@@ -199,7 +239,7 @@ Currently not using minimap-mode
 ;; Adds an minimap to buffer
 ;; (minimap-mode)
 #+END_SRC
-* ORG Mode
+* Org-mode
 ** Need org-mode
 
 Make sure that we have org-mode installed.

@@ -2,7 +2,15 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#sec-1">1. Get packages</a></li>
+<li><a href="#sec-1">1. Get packages</a>
+<ul>
+<li><a href="#sec-1-1">1.1. List of packages</a></li>
+<li><a href="#sec-1-2">1.2. Archives used</a></li>
+<li><a href="#sec-1-3">1.3. Initilaize</a></li>
+<li><a href="#sec-1-4">1.4. Fetch packages</a></li>
+<li><a href="#sec-1-5">1.5. Install packages</a></li>
+</ul>
+</li>
 <li><a href="#sec-2">2. Style</a>
 <ul>
 <li><a href="#sec-2-1">2.1. Disable the splash screen (starting screen)</a></li>
@@ -37,7 +45,7 @@
 </ul>
 </li>
 <li><a href="#sec-6">6. Not active</a></li>
-<li><a href="#sec-7">7. ORG Mode</a>
+<li><a href="#sec-7">7. Org-mode</a>
 <ul>
 <li><a href="#sec-7-1">7.1. Need org-mode</a></li>
 <li><a href="#sec-7-2">7.2. Global shortcuts</a></li>
@@ -56,6 +64,16 @@
 
 # Get packages<a id="sec-1" name="sec-1"></a>
 
+## List of packages<a id="sec-1-1" name="sec-1-1"></a>
+
+These are all the non built-in packages which are used in this build.
+
+    (setq package-list '(elpy expand-region magit multiple-cursors))
+
+## Archives used<a id="sec-1-2" name="sec-1-2"></a>
+
+Use [ELPA](https://elpa.gnu.org/) and [MELPA](https://melpa.org/#/) archives for packages.
+
     ;; Add packet archives
     (setq package-archives
           '(("gnu" . "http://elpa.gnu.org/packages/")
@@ -64,18 +82,40 @@
      ;; Sort C - h  a command to sort by relevance
     (setq apropos-sort-by-scores t)
 
+## Initilaize<a id="sec-1-3" name="sec-1-3"></a>
+
+Make sure that the archives are availale.
+
+    (package-initialize)
+
+## Fetch packages<a id="sec-1-4" name="sec-1-4"></a>
+
+Fetch all the packages which are needed.
+
+    (unless package-archive-contents
+      (package-refresh-contents))
+
+## Install packages<a id="sec-1-5" name="sec-1-5"></a>
+
+This will install all the packages which are not installed.
+
+    (dolist (package package-list)
+      (unless (package-installed-p package)
+        (package-install package)))
+
 # Style<a id="sec-2" name="sec-2"></a>
 
 Here are all the changes that make some change to the apperance of Emacs.
 
 ## Disable the splash screen (starting screen)<a id="sec-2-1" name="sec-2-1"></a>
 
+No need to have the starting screen. However, if you like it you can comment this line out with `;;` at the begining or by just removing it.
+
     (setq inhibit-splash-screen t)
 
 ## Hide the menu and toolbar; set the title and load theme<a id="sec-2-2" name="sec-2-2"></a>
 
-To hide the menu change `t` to `-1` and vise-versa for toolbar.
-To change the text in top left corner, change the text between the quotation marks.
+To hide the menu change `t` to `-1` and vise-versa for toolbar. To change the text in top left corner, change the text between the quotation marks. The theme can also be changed I would recommend you type `M-x` and then `customize-themes` to find a theme which you like and then change the text to that theme.
 
     (menu-bar-mode t)
     (tool-bar-mode -1)
@@ -84,19 +124,19 @@ To change the text in top left corner, change the text between the quotation mar
 
 ## Start in maximized window mode<a id="sec-2-3" name="sec-2-3"></a>
 
-I prefer Emacs to launch in full screen
+I prefer Emacs to launch in full screen, either delete or comment this out if you don't like this option.
 
     (toggle-frame-maximized)
 
 ## Highlight parethesis<a id="sec-2-4" name="sec-2-4"></a>
 
-This makes programing a lot easier.
+This makes programing a lot easier, basically it highlights (), {} and []. It might do some more but these are the ones I benefit from.
 
     (show-paren-mode)
 
 ## Line numbers<a id="sec-2-5" name="sec-2-5"></a>
 
-This makes sure that the linenumbers are always shown..
+This makes sure that the line numbers are always shown. Makes it easier to use command such as `M-g M-g` and then typing the line you want to go to.
 
     (require 'linum)
     (global-linum-mode 1)
@@ -109,7 +149,7 @@ Good to keep track of how wide I've written, for example when coding.
 
 ## Highlight line<a id="sec-2-7" name="sec-2-7"></a>
 
-Highlight the line which the pointer is at.
+Highlight the line which the pointer is at. Very usefull to quickly find the point.
 
     (global-hl-line-mode 1)
 
@@ -138,7 +178,7 @@ These are some other settings which I haven't sorted into categories yet.
 
 # Comfort of Life<a id="sec-3" name="sec-3"></a>
 
-This section contain some small things which makes my emacs experience much more pleasent
+This section contain some small things which makes my emacs experience much more pleasent.
 
 ## Delete and replace region when typing<a id="sec-3-1" name="sec-3-1"></a>
 
@@ -167,7 +207,7 @@ Enables IDO-mode which makes it easier to find and open files in the system. Whe
 
 ## Automatic newlines<a id="sec-3-5" name="sec-3-5"></a>
 
-Add newline with C-n if at end of buffer, otherwise you have to press RET.
+Add newline with `C-n` if at end of buffer, otherwise you have to press RET.
 
     (setq next-line-add-newlines t)
 
@@ -224,7 +264,7 @@ Currently not using minimap-mode
     ;; Adds an minimap to buffer
     ;; (minimap-mode)
 
-# ORG Mode<a id="sec-7" name="sec-7"></a>
+# Org-mode<a id="sec-7" name="sec-7"></a>
 
 ## Need org-mode<a id="sec-7-1" name="sec-7-1"></a>
 
