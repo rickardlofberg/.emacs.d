@@ -149,9 +149,11 @@ Good to keep track of how wide I've written, for example when coding.
 
 ## Highlight line<a id="sec-2-7" name="sec-2-7"></a>
 
-Highlight the line which the pointer is at. Very useful to quickly find the point.
+Highlight the line which the pointer is at. Very useful to quickly find the point. The colour is also changed to make it easier to find the point. The cursor is also made orange to be easier to find in a document.
 
     (global-hl-line-mode 1)
+    (set-face-background hl-line-face "DeepSkyBlue4")
+    (set-cursor-color "sienna2")
 
 # Comfort of Life<a id="sec-3" name="sec-3"></a>
 
@@ -228,11 +230,15 @@ Change default interpreter to python3.
 
 ## Expand/Collapse region<a id="sec-5-2" name="sec-5-2"></a>
 
-This is used for code-folding, it should detect segments and then fold/unfold it by using `C-@`.
+This is used for code-folding, it should detect segments and then fold/unfold it by using `C-@ C/c` and only in Elpy-mode.
+
+    (add-hook 'elpy-mode-hook 
+      (function (lambda ()
+                  (hs-minor-mode t))))
 
     ;; Expand region
-    (require 'expand-region)
-    (global-set-key (kbd "C-@") 'er/expand-region)
+    ;; (require 'expand-region)
+    ;; (global-set-key (kbd "C-@") 'er/expand-region)
 
 # Not active<a id="sec-6" name="sec-6"></a>
 
@@ -358,3 +364,17 @@ These are some other settings which I haven't sorted into categories yet.
      ;; Your init file should contain only one such instance.
      ;; If there is more than one, they won't work right.
      '(hl-line ((t (:background "gray20")))))
+    
+    (org-babel-do-load-languages
+     'org-babel-load-languages
+     '((sh         . t)
+       (js         . t)
+       (emacs-lisp . t)
+       (perl       . t)
+       (scala      . t)
+       (clojure    . t)
+       (python     . t)
+       (ruby       . t)
+       (dot        . t)
+       (css        . t)
+       (plantuml   . t)))
