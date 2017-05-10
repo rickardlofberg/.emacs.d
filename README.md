@@ -199,8 +199,8 @@ Never ever use backspace again, there are two settings below, both at the same k
     (global-set-key (kbd "C-ö") 'delete-backward-char) ;; Designed for a Swedish keyboard
     (global-set-key (kbd "M-ö") 'backward-kill-word)  ;; Designed for a Swedish keyboard
     
-    (global-set-key (kbd "C-;") 'delete-backward-char) ;; Designed for a Swedish keyboard
-    (global-set-key (kbd "M-;") 'backward-kill-word)  ;; Designed for a Swedish keyboard
+    (global-set-key (kbd "C-;") 'delete-backward-char) ;; Designed for a UK keyboard (Cred: Christian for correction)
+    (global-set-key (kbd "M-;") 'backward-kill-word)  ;; Designed for a UK keyboard (Cred: Christian for correction)
 
 ## Multiple Cursors<a id="sec-4-2" name="sec-4-2"></a>
 
